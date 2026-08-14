@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "description": "Federated VKB peers. Each key is a namespace; a relation target written as the CURIE 'namespace:slug' resolves through this registry. The build is OFFLINE by default: it validates that a foreign edge's namespace is registered here (warning if not), but does not fetch products_json_url. An opt-in resolution step can later fetch a peer's products.json to confirm a target exists and enrich the edge with its title. See documentation/schema.md (Federation).",
+    "profile": "civic/0.5"
+  },
+  "peers": {
+    "techsoup": {
+      "label": "TechSoup VKB",
+      "base_uri": "https://vkb.techsoup.org/",
+      "products_json_url": "https://vkb.techsoup.org/products.json",
+      "okf_version": "0.1",
+      "self": true
+    }
+  }
+}

@@ -1,0 +1,23 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Mac System Files
+.DS_Store
+
+# Obsidian local config / UI state
+VKB-Core/.obsidian/
+
+# Logs
+link_audit_report.md
+registry/swarm_activity_log.md
+
+# Offer Center data (Optional: keep if you want to ship the built catalog)
+# products.json
+
+# Generated SQLite engine (rebuilt from files)
+vkb.db
+
+# transient output from check_contract.py
+.contract_tmp_*/

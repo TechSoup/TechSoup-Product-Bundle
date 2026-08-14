@@ -1,0 +1,69 @@
+{
+  "version": "civic/0.4",
+  "description": "The VKB product-package STRUCTURE standard, expressed as data so it is portable across federated VKBs and enforceable by lint_structure.py. Keyed by the OKF `type`; only `offer` is defined today. Each element declares which consumer needs it (`impact`) and whether its absence breaks that consumer (`blocking`). Linting is impact-scoped: a non-blocking gap is reported but does not fail the build or other apps. `deny` entries flag retired/forbidden artifacts.",
+  "naming": {
+    "slug_pattern": "^[a-z0-9._]+$",
+    "comment": "Folder name == slug; lowercase, digits, dot, underscore only (e.g. make.com_for_ngos, 1password)."
+  },
+  "types": {
+    "offer": {
+      "elements": [
+        {
+          "id": "readme",
+          "kind": "file",
+          "path": "{slug}_README.md",
+          "impact": "offer-center",
+          "blocking": true,
+          "fixable": false,
+          "message": "core overview; the build only detects a product when this exists"
+        },
+        {
+          "id": "skill",
+          "kind": "file",
+          "path": "agent/{slug}_skill.md",
+          "impact": "consultant-apps",
+          "blocking": false,
+          "fixable": true,
+          "from_template": "agent_skill_template.md",
+          "message": "consultant persona used by apps that reason over the product"
+        },
+        {
+          "id": "use_cases",
+          "kind": "dir",
+          "path": "content/use_cases",
+          "gitkeep": true,
+          "impact": "knowledge-completeness",
+          "blocking": false,
+          "fixable": true,
+          "message": "markdown files, one per need the product fulfills"
+        },
+        {
+          "id": "case_studies",
+          "kind": "dir",
+          "path": "content/case_studies",
+          "gitkeep": true,
+          "impact": "knowledge-completeness",
+          "blocking": false,
+          "fixable": true,
+          "message": "markdown files showing the product in use by real organizations"
+        }
+      ],
+      "deny": [
+        {
+          "id": "legacy_use_cases_file",
+          "path": "content/use_cases.md",
+          "impact": "standard-drift",
+          "blocking": false,
+          "message": "retired flat-file convention; use the content/use_cases/ folder instead"
+        },
+        {
+          "id": "legacy_case_studies_file",
+          "path": "content/case_studies.md",
+          "impact": "standard-drift",
+          "blocking": false,
+          "message": "retired flat-file convention; use the content/case_studies/ folder instead"
+        }
+      ]
+    }
+  }
+}

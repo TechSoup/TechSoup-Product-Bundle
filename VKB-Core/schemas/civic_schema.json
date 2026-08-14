@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://techsoup.org/vkb/schemas/civic_schema.json",
+  "title": "VKB product record schema (OKF core + x-civic 0.4)",
+  "description": "Validates VKB product frontmatter: core OKF requires only `type`; the x-civic conventions are enforced when an x-civic block is present.",
+  "type": "object",
+  "required": ["type"],
+  "properties": {
+    "type": { "type": "string", "minLength": 1 },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "okf_version": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "x-civic": { "$ref": "#/$defs/xcivic" }
+  },
+  "allOf": [
+    {
+      "comment": "Any record carrying an x-civic block must declare the profile version.",
+      "if": { "required": ["x-civic"] },
+      "then": { "properties": { "x-civic": { "required": ["profile"] } } }
+    },
+    {
+      "comment": "Offers carry a title, an offer block and a vendor_url.",
+      "if": { "properties": { "type": { "const": "offer" } }, "required": ["type"] },
+      "then": {
+        "required": ["title", "x-civic"],
+        "properties": {
+          "x-civic": {
+            "required": ["profile", "status", "category", "offer", "eligibility", "provenance"],
+            "properties": {
+              "offer": { "required": ["type", "summary"] },
+              "provenance": { "required": ["vendor_url"] }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "xcivic": {
+      "type": "object",
+      "properties": {
+        "profile": { "const": "civic/0.5" },
+        "status": { "enum": ["PROPOSED", "INITIALIZED", "ACTIVE", "ARCHIVED", "REJECTED"] },
+        "category": { "type": "string" },
+        "sub_category": { "type": "string" },
+        "capability": { "type": "string" },
+        "maintainer": { "type": "string" },
+        "namespace": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*$" },
+        "base_uri": { "type": "string" },
+        "reason": { "type": "string" },
+        "offer": {
+          "type": "object",
+          "required": ["type", "summary"],
+          "properties": {
+            "type": { "type": "string" },
+            "summary": { "type": "string" },
+            "standard_tier": { "type": ["string", "null"] },
+            "savings_estimate": { "type": ["string", "null"] },
+            "badges": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "eligibility": {
+          "type": "object",
+          "properties": {
+            "eligible_audiences": { "type": "array", "items": { "type": "string" } },
+            "regions": { "type": "array" },
+            "pcs_subject": { "type": "array" },
+            "rules": { "type": ["string", "null"] },
+            "min_budget": { "type": ["number", "null"] },
+            "max_budget": { "type": ["number", "null"] },
+            "notes": { "type": ["string", "null"] }
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "source": { "type": "string" },
+            "vendor_url": { "type": "string" },
+            "last_audited": { "type": ["string", "null"] }
+          }
+        },
+        "relations": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/relation" }
+        },
+        "archived": { "$ref": "#/$defs/archived" }
+      },
+      "allOf": [
+        {
+          "comment": "A reason is required to retain an ARCHIVED or REJECTED record.",
+          "if": { "properties": { "status": { "enum": ["ARCHIVED", "REJECTED"] } }, "required": ["status"] },
+          "then": { "required": ["reason"] }
+        },
+        {
+          "comment": "ARCHIVED records also carry a structured archival block.",
+          "if": { "properties": { "status": { "const": "ARCHIVED" } }, "required": ["status"] },
+          "then": { "required": ["archived"] }
+        }
+      ]
+    },
+    "archived": {
+      "type": "object",
+      "required": ["date", "disposition"],
+      "additionalProperties": false,
+      "properties": {
+        "date": { "type": "string" },
+        "disposition": {
+          "enum": ["acquired", "discontinued", "merged", "superseded", "eligibility-changed", "duplicate"]
+        },
+        "successor": { "type": "string" }
+      }
+    },
+    "relation": {
+      "type": "object",
+      "required": ["target", "type"],
+      "additionalProperties": false,
+      "properties": {
+        "target": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Edge target: a local product slug, or a CURIE 'namespace:slug' pointing into a federated VKB (the namespace must be registered in registry/peers.json)."
+        },
+        "type": { "enum": ["complements", "alternative", "conflicts", "requires", "related", "learn-with"] },
+        "note": { "type": "string" }
+      }
+    }
+  }
+}
