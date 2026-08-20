@@ -12,7 +12,7 @@ x-civic:
 
 # VKB-Core
 
-The source-of-truth knowledge base for TechSoup nonprofit product intelligence: each product is a markdown file with YAML frontmatter, compiled by `scripts/build_products.py` into the `products.json` headless API that the Offer Center and other tools consume. Build and conformance details live in [documentation/](documentation/).
+exp: each product is a markdown file with YAML frontmatter, compiled by `scripts/build_products.py` into the `products.json` headless API that the Offer Center and other tools consume. Build and conformance details live in [documentation/](documentation/).
 
 ## Categories
 

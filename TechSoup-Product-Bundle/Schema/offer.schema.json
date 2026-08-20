@@ -1,0 +1,272 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vkb.techsoup.org/schema/offer.schema.json",
+  "title": "VKB Offer Entry",
+  "description": "Frontmatter contract for a Verbose Knowledge Base product entry (products/**/*_README.md). Validate against the parsed YAML frontmatter, not the whole file. Derived from all 159 entries in the bundle; see offer-entry.md for field narrative and known drift.",
+  "type": "object",
+  "required": ["type", "title", "x-civic"],
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "description": "Document kind. Product entries are always 'offer'.",
+      "const": "offer"
+    },
+    "title": {
+      "description": "Human-readable product name as TechSoup presents it.",
+      "type": "string",
+      "minLength": 1
+    },
+    "x-civic": { "$ref": "#/$defs/civic" }
+  },
+  "$defs": {
+    "civic": {
+      "type": "object",
+      "required": [
+        "profile",
+        "status",
+        "category",
+        "sub_category",
+        "offer",
+        "eligibility",
+        "provenance"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "profile": {
+          "description": "Schema profile identifier.",
+          "type": "string",
+          "pattern": "^civic/[0-9]+\\.[0-9]+$"
+        },
+        "status": {
+          "description": "Whether the offer is currently available.",
+          "enum": ["ACTIVE", "ARCHIVED"]
+        },
+        "category": {
+          "description": "Top-level category. Must agree with the entry's directory under products/.",
+          "enum": [
+            "AI",
+            "Communications",
+            "Fundraising",
+            "Infrastructure",
+            "Operations",
+            "Programs",
+            "Security"
+          ]
+        },
+        "sub_category": {
+          "description": "Narrower grouping. Free text by design today (88 distinct values, many singletons and near-duplicates). Treat as a label, not a key: normalize before grouping or filtering on it.",
+          "type": "string",
+          "minLength": 1
+        },
+        "alias": {
+          "description": "Alternative names the product is known by. May be an empty array.",
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "relations": {
+          "description": "Links from this entry to other product entries. May be an empty array.",
+          "type": "array",
+          "items": { "$ref": "#/$defs/relation" }
+        },
+        "offer": { "$ref": "#/$defs/offer" },
+        "eligibility": { "$ref": "#/$defs/eligibility" },
+        "provenance": { "$ref": "#/$defs/provenance" },
+        "archived": { "$ref": "#/$defs/archived" },
+        "reason": {
+          "description": "Prose explanation of why the entry was archived.",
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "description": "ARCHIVED entries must carry the archived block and a reason.",
+          "if": {
+            "properties": { "status": { "const": "ARCHIVED" } },
+            "required": ["status"]
+          },
+          "then": { "required": ["archived", "reason"] },
+          "else": {
+            "not": { "anyOf": [{ "required": ["archived"] }, { "required": ["reason"] }] }
+          }
+        }
+      ]
+    },
+
+    "relation": {
+      "type": "object",
+      "required": ["target", "type"],
+      "additionalProperties": false,
+      "properties": {
+        "target": {
+          "description": "Directory slug of the related entry, e.g. 'openai'.",
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_.]*$"
+        },
+        "type": {
+          "description": "Nature of the relationship. Only 'alternative' is in use.",
+          "enum": ["alternative"]
+        },
+        "note": {
+          "description": "Why the relation holds, and any guidance for choosing between the two.",
+          "type": "string"
+        }
+      }
+    },
+
+    "offer": {
+      "type": "object",
+      "required": ["type", "summary", "badges"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "description": "Nature of the offer. The three 'Built for Nonprofits' variants are singletons and candidates for consolidation.",
+          "enum": [
+            "Discount",
+            "Donation",
+            "Discovery",
+            "Open Source",
+            "Built for Nonprofits",
+            "Commercially Built for Nonprofits",
+            "Nonprofit Built for Nonprofits"
+          ]
+        },
+        "summary": {
+          "description": "Short plain-language statement of the offer, e.g. '50% Discount' or '$8/user/month'.",
+          "type": "string",
+          "minLength": 1
+        },
+        "badges": {
+          "description": "Display labels shown alongside the product.",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "Discount",
+              "Donation",
+              "Discovery",
+              "Open Source",
+              "Built for Nonprofits"
+            ]
+          }
+        },
+        "standard_tier": {
+          "description": "Commercial tier the offer maps to. Often null.",
+          "type": ["string", "null"]
+        },
+        "savings_estimate": {
+          "description": "Estimated value of the offer. Often null.",
+          "type": ["string", "null"]
+        }
+      }
+    },
+
+    "eligibility": {
+      "type": "object",
+      "required": ["eligible_audiences", "regions", "pcs_subject", "min_budget"],
+      "additionalProperties": false,
+      "properties": {
+        "eligible_audiences": {
+          "description": "Organization types that qualify. Multiple values per entry are normal.",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "nonprofit",
+              "public_library",
+              "social_enterprise",
+              "healthcare",
+              "k12",
+              "team",
+              "personal",
+              "everyone"
+            ]
+          }
+        },
+        "regions": {
+          "description": "Where the offer is available. 'ALL' means unrestricted, not 'every listed region'.",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["ALL", "US", "CA", "UK", "AU"] }
+        },
+        "pcs_subject": {
+          "description": "Philanthropy Classification System subject codes, or 'ALL' when the offer is not restricted by subject area.",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "oneOf": [
+              { "const": "ALL" },
+              { "type": "string", "pattern": "^S[A-Z][0-9]{6}$" }
+            ]
+          }
+        },
+        "min_budget": {
+          "description": "Lower budget bound for eligibility. 0 in effectively all entries.",
+          "type": "number",
+          "minimum": 0
+        },
+        "max_budget": {
+          "description": "Upper budget bound. Usually null, meaning no ceiling.",
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "rules": {
+          "description": "Free-text qualifications not captured by the structured fields. Usually null.",
+          "type": ["string", "null"]
+        },
+        "notes": {
+          "description": "Deprecated. Duplicates the purpose of 'rules' and appears in exactly one entry (programs/safe_shelter_collaborative). Merge its content into 'rules' and remove; do not add new uses.",
+          "deprecated": true,
+          "type": ["string", "null"]
+        }
+      }
+    },
+
+    "provenance": {
+      "description": "What makes an entry citable: when it was last verified, and against what source.",
+      "type": "object",
+      "required": ["last_audited", "vendor_url", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "last_audited": {
+          "description": "Date a human last verified this entry against the vendor. Quote it in YAML so it parses as a string.",
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "vendor_url": {
+          "description": "The vendor page the offer terms were read from.",
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https?://"
+        },
+        "source": {
+          "description": "Origin of the record. 'TechSoup VKB' means authored and audited here; 'products.json (reverse-sync)' means the entry was reconstructed from the downstream feed and its detail is less trustworthy.",
+          "enum": ["TechSoup VKB", "products.json (reverse-sync)"]
+        }
+      }
+    },
+
+    "archived": {
+      "description": "Present only when status is ARCHIVED. Archived entries are retained rather than deleted so retired offers stay answerable and are not silently re-added.",
+      "type": "object",
+      "required": ["date", "disposition"],
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "description": "Date the offer was archived. Quote it in YAML so it parses as a string.",
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "disposition": {
+          "description": "Why the offer left the catalog.",
+          "enum": ["discontinued", "acquired"]
+        }
+      }
+    }
+  }
+}
