@@ -25,20 +25,18 @@ This repository is designed to be highly portable so you can weave this data int
    Like the Offer Center, you can parse these files into a single JSON object to drive an entire interactive portal.
 2. **Import into LLMs**
    Because these are structured markdown files, they can be directly imported into an LLM context. For example, our `ask-techsoup` skills file allows a user to map this dataset into an LLM, enabling users to query and receive customized tech recommendations.
-3. **Create Custom Website Embeds (Interactive Demo)**
-   You can parse the data locally to generate targeted HTML widgets for your own website. 
-
-   👉 **[View the Live Interactive Demo](https://techsoup.github.io/TechSoup-Product-Bundle/examples/)**
+3. **Create Custom Website Embeds**
+   You can parse the data locally to generate targeted HTML widgets for your own website. We have provided reference examples of this in the `examples/` directory.
 
 ### Example: Embed Curated Tools on Your Website
 
 We ve provided a reference builder in the `examples/` directory that demonstrates how to filter this dataset and generate deployable HTML web components. 
 
 **How it works:**
-1. Run `python3 examples/build_demo_page.py`.
-2. The script parses the data packages and builds `examples/index.html`.
-3. Via GitHub Pages, the `examples/index.html` file serves as a live "Mock Partner Hub" showing exactly what the generated widgets look like on a real page.
-4. If you like a widget, simply copy the HTML from the text box below it and paste it directly into your website s CMS (e.g., WordPress Custom HTML).
+1. Navigate to the `examples/` folder in this repository. 
+2. You will see a visual preview of what the generated web components look like.
+3. Right below the preview, you can copy the raw HTML and paste it directly into your website s CMS (e.g., WordPress Custom HTML).
+4. If you want to regenerate the embeds with updated data, simply run `python3 examples/build_examples_readme.py`.
 
 ## Contributing
 We welcome community involvement! Whether you want to clone this repository to power your own applications, submit a pull request to add new products, or share scripts you ve written, please see our [CONTRIBUTING.md](CONTRIBUTING.md) guide.
