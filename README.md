@@ -28,15 +28,18 @@ This repository is designed to be highly portable so you can weave this data int
 3. **Create Custom Website Embeds**
    You can parse the data locally to generate targeted HTML widgets for your own website. We have provided reference examples of this in the `examples/` directory.
 
-### Example: Embed Curated Tools on Your Website
+### Example: Build a Widget From the Bundle
 
-We ve provided a reference builder in the `examples/` directory that demonstrates how to filter this dataset and generate deployable HTML web components. 
+The `examples/` directory contains reference implementations of the
+"filter this dataset, drive your own UI" pattern: a Python script compiles a
+filtered slice of the bundle into a JSON feed, and a small web component
+renders that feed wherever you drop it.
 
 **How it works:**
-1. Navigate to the `examples/` folder in this repository. 
-2. You will see a visual preview of what the generated web components look like.
-3. Right below the preview, you can copy the raw HTML and paste it directly into your website s CMS (e.g., WordPress Custom HTML).
-4. If you want to regenerate the embeds with updated data, simply run `python3 examples/build_examples_readme.py`.
+1. Navigate to `examples/open-source/` or `examples/security/` in this repository.
+2. Each folder is self-contained: a build script, its generated `products.json`, a `<ts-offer-list>` web component, and a demo `index.html`. Run the folder's own `README.md` instructions to see it live.
+3. To regenerate a feed with updated data, run that folder's `build_feed.py`.
+4. To adapt the pattern for your own site, host `products.json` and `ts-offer-list.js` anywhere reachable over http(s) and point the component's `src` attribute at it.
 
 ## Contributing
 We welcome community involvement! Whether you want to clone this repository to power your own applications, submit a pull request to add new products, or share scripts you ve written, please see our [CONTRIBUTING.md](CONTRIBUTING.md) guide.

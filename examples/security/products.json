@@ -1,0 +1,68 @@
+[
+  {
+    "title": "1Password for Nonprofits",
+    "category": "Security",
+    "summary": "50% Discount",
+    "url": "https://1password.com/for-good/"
+  },
+  {
+    "title": "Acrisure",
+    "category": "Security",
+    "summary": "5% to 10% program-based premium credits",
+    "url": "https://www.techsoup.org/acrisure"
+  },
+  {
+    "title": "Avast Business for Nonprofits",
+    "category": "Security",
+    "summary": "Donation unlimited licenses (~$8-$12/yr admin fee per license)",
+    "url": "https://www.techsoup.org/avast-business"
+  },
+  {
+    "title": "Bitdefender GravityZone",
+    "category": "Security",
+    "summary": "Donation to protect up to 50 devices (Admin Fee ~$60)",
+    "url": "https://www.techsoup.org/bitdefender"
+  },
+  {
+    "title": "Bitwarden",
+    "category": "Security",
+    "summary": "Free + discount pricing options",
+    "url": "https://bitwarden.com"
+  },
+  {
+    "title": "Cloudflare - Project Galileo",
+    "category": "Security",
+    "summary": "Free Enterprise Tier",
+    "url": "https://www.cloudflare.com/galileo/"
+  },
+  {
+    "title": "Dashlane",
+    "category": "Security",
+    "summary": "50% Discount on Business subscription",
+    "url": "https://www.techsoup.org/dashlane"
+  },
+  {
+    "title": "LastPass",
+    "category": "Security",
+    "summary": "Donated LastPass Teams",
+    "url": "https://www.techsoup.org/lastpass"
+  },
+  {
+    "title": "Norton for Nonprofits",
+    "category": "Security",
+    "summary": "Subscription donations",
+    "url": "https://www.techsoup.org/norton"
+  },
+  {
+    "title": "Okta for Good",
+    "category": "Security",
+    "summary": "50 Free Licenses",
+    "url": "https://www.okta.com/okta-for-good/"
+  },
+  {
+    "title": "ThreatDown",
+    "category": "Security",
+    "summary": "Varing discount levels by product",
+    "url": "https://www.techsoup.org/threatdown"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Bitwarden",
+    "category": "Security",
+    "summary": "Free + discount pricing options",
+    "url": "https://bitwarden.com"
+  },
+  {
+    "title": "Data Commons",
+    "category": "AI",
+    "summary": "Free - Open Source",
+    "url": "https://datacommons.org/"
+  },
+  {
+    "title": "LibreOffice",
+    "category": "Operations",
+    "summary": "Free - Open Source",
+    "url": "https://www.libreoffice.org/"
+  },
+  {
+    "title": "Nextcloud",
+    "category": "Infrastructure",
+    "summary": "Free (Open Source) & Support Costs",
+    "url": "https://nextcloud.com/"
+  },
+  {
+    "title": "OpenOffice",
+    "category": "Operations",
+    "summary": "Free - Open Source",
+    "url": "https://www.openoffice.org/"
+  },
+  {
+    "title": "WordPress",
+    "category": "Communications",
+    "summary": "Free open-source website building software",
+    "url": "https://wordpress.org"
+  }
+]
