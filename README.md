@@ -25,21 +25,18 @@ This repository is designed to be highly portable so you can weave this data int
    Like the Offer Center, you can parse these files into a single JSON object to drive an entire interactive portal.
 2. **Import into LLMs**
    Because these are structured markdown files, they can be directly imported into an LLM context. For example, our `ask-techsoup` skills file allows a user to map this dataset into an LLM, enabling users to query and receive customized tech recommendations.
-3. **Create Custom Website Embeds**
-   You can parse the data locally to generate targeted HTML widgets for your own website. We have provided two examples of this below.
+3. **Create Custom Website Embeds (Interactive Demo)**
+   You can parse the data locally to generate targeted HTML widgets for your own website. We have provided an interactive demo of this in the `examples/` directory.
 
 ### Example: Embed Curated Tools on Your Website
 
-We ve provided reference scripts in the `scripts/` directory that demonstrate how to filter this dataset and generate a deployable HTML web component. 
+We ve provided a reference builder in the `examples/` directory that demonstrates how to filter this dataset and generate deployable HTML web components. 
 
 **How it works:**
-1. Run one of the Python scripts below.
-2. The script parses the data and outputs an `.html` file containing a fully styled chunk of HTML.
-3. You copy that HTML chunk and paste it directly into your website (such as a WordPress "Custom HTML" block). It will render as a clean, styled list of tools with a "Powered by TechSoup" footer.
-
-**Available Scripts:**
-- `scripts/generate_opensource_embed.py`: Parses the bundle for products tagged with "Open Source" and generates `open_source_embed.html`.
-- `scripts/generate_security_embed.py`: Parses the bundle specifically for the "Security" category and generates `security_embed.html`.
+1. Run `python3 examples/build_demo_page.py`.
+2. The script parses the data packages and builds `examples/index.html`.
+3. Open `examples/index.html` in your web browser. You will see a live "Mock Partner Hub" showing exactly what the generated widgets look like on a page.
+4. If you like a widget, simply copy the HTML from the text box below it and paste it directly into your website s CMS (e.g., WordPress Custom HTML).
 
 ## Contributing
 We welcome community involvement! Whether you want to clone this repository to power your own applications, submit a pull request to add new products, or share scripts you ve written, please see our [CONTRIBUTING.md](CONTRIBUTING.md) guide.

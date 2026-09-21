@@ -12,7 +12,7 @@ To maintain our "Trust Infrastructure", **all product additions must adhere to t
 ### 1. Clone & Build Your Own Apps
 You are encouraged to clone this repository and use the OKF-conformant markdown files to power your own applications, portals, or LLM agents. 
 - If you build a new tool or integration, **let us know!**
-- Feel free to share custom scripts (like those in the `scripts/` directory) that help organizations parse the bundle in creative ways.
+- Feel free to share custom scripts (like those in the `examples/` directory) that help organizations parse the bundle in creative ways.
 
 ### 2. Add New Products
 If you know of a technology donation or discount available to nonprofits that isn t listed here:
@@ -28,6 +28,6 @@ Product offers, eligibility rules, and vendor URLs change over time. If you spot
 3. **Submit a Pull Request (PR)** explaining the update.
 
 ### 4. Share Custom Scripts
-If you ve written a Python, Node.js, or bash script that filters, parses, or transforms this data into something useful, please submit a PR to add it to the `scripts/` directory!
+If you ve written a Python, Node.js, or bash script that filters, parses, or transforms this data into something useful, please submit a PR to add it to the `examples/` directory!
 
 By contributing to this repository, you agree that your contributions will be licensed under its CC BY-SA 4.0 License.
