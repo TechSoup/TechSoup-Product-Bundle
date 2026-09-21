@@ -26,7 +26,9 @@ This repository is designed to be highly portable so you can weave this data int
 2. **Import into LLMs**
    Because these are structured markdown files, they can be directly imported into an LLM context. For example, our `ask-techsoup` skills file allows a user to map this dataset into an LLM, enabling users to query and receive customized tech recommendations.
 3. **Create Custom Website Embeds (Interactive Demo)**
-   You can parse the data locally to generate targeted HTML widgets for your own website. We have provided an interactive demo of this in the `examples/` directory.
+   You can parse the data locally to generate targeted HTML widgets for your own website. 
+
+   👉 **[View the Live Interactive Demo](https://techsoup.github.io/TechSoup-Product-Bundle/examples/)**
 
 ### Example: Embed Curated Tools on Your Website
 
@@ -35,7 +37,7 @@ We ve provided a reference builder in the `examples/` directory that demonstrate
 **How it works:**
 1. Run `python3 examples/build_demo_page.py`.
 2. The script parses the data packages and builds `examples/index.html`.
-3. Open `examples/index.html` in your web browser. You will see a live "Mock Partner Hub" showing exactly what the generated widgets look like on a page.
+3. Via GitHub Pages, the `examples/index.html` file serves as a live "Mock Partner Hub" showing exactly what the generated widgets look like on a real page.
 4. If you like a widget, simply copy the HTML from the text box below it and paste it directly into your website s CMS (e.g., WordPress Custom HTML).
 
 ## Contributing
