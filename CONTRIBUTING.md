@@ -30,4 +30,4 @@ Product offers, eligibility rules, and vendor URLs change over time. If you spot
 ### 4. Share Custom Scripts
 If youve written a Python, Node.js, or bash script that filters, parses, or transforms this data into something useful, please submit a PR to add it to the `scripts/` directory!
 
-By contributing to this repository, you agree that your contributions will be licensed under its MIT License.
+By contributing to this repository, you agree that your contributions will be licensed under its CC BY-SA 4.0 License.

@@ -1,7 +1,6 @@
 # TechSoup Product Bundle
 
-![TechSoup Open Source](https://img.shields.io/badge/TechSoup-Open%20Source-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
+![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-blue.svg) ![bundle](https://img.shields.io/badge/bundle-v0.7-orange.svg) ![maintained by](https://img.shields.io/badge/maintained_by-TechSoup_Global_Network-blueviolet.svg)
 
 The TechSoup Product Bundle is a collection of OKF (Open Knowledge Foundation) conformant Markdown documents (Data Packages). These documents describe technology donations and discounts available for nonprofits, regardless of where those discounts are found or who publishes them. 
 
@@ -37,4 +36,4 @@ Weve provided simple Python scripts in the `scripts/` directory to demonstrate h
 We welcome community involvement! Whether you want to clone this repository to power your own applications, submit a pull request to add new products, or share scripts youve written, please see our [CONTRIBUTING.md](CONTRIBUTING.md) guide.
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the CC BY-SA 4.0 License. See the [LICENSE](LICENSE) file for details.
