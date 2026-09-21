@@ -1,6 +1,6 @@
 # Fundraising
 
-12 live products in this category. Part of the [VKB catalog](../../index.md).
+12 live products in this category. Part of the [TechSoup Product Bundle](../index.md).
 
 ## Products
 
