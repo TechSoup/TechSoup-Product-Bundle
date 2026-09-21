@@ -1,13 +1,15 @@
 # TechSoup Product Bundle
 
-![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-blue.svg) ![bundle](https://img.shields.io/badge/bundle-v0.7-orange.svg) ![maintained by](https://img.shields.io/badge/maintained_by-TechSoup_Global_Network-blueviolet.svg)
+![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-blue.svg)
+![bundle](https://img.shields.io/badge/bundle-v0.7-orange.svg)
+![maintained by](https://img.shields.io/badge/maintained_by-TechSoup_Global_Network-blueviolet.svg)
 
-The TechSoup Product Bundle is a collection of OKF (Open Knowledge Foundation) conformant Markdown documents (Data Packages). These documents describe technology donations and discounts available for nonprofits, regardless of where those discounts are found or who publishes them. 
+The TechSoup Product Bundle is a collection of Open Knowledge Format (OKF) conformant Markdown documents (Data Packages). These documents describe technology donations and discounts available for nonprofits, regardless of where those discounts are found or who publishes them. 
 
-This repository acts as a single, portable source of truth. The structured data within these Markdown files can easily be parsed into JSON or other formats to feed downstream applications, HTML interfaces, and LLM integrations.
+This repository is a public version of the exact dataset TechSoup uses to power our own tooling, such as the [Offer Center](https://offercenter.techsoup.org/).
 
 ## Architecture
-This repository maintains 1:1 structural parity with the TechSoup VKB (Verbose Knowledge Base). Each product is wrapped in its own folder to securely bundle its schemas, metadata, and skill files together in accordance with Open Knowledge Format principles.
+This repository is structured as a flexible, open information architecture. By treating configuration and knowledge as content (file-first), the **same set of files** can be used to construct many different tools, interfaces, and AI agents. It acts as a single, portable source of truth that anyone in the sector can build upon without needing to host a complex backend database.
 
 ## Future Roadmap
 We are actively building out this product bundle to contain deeper, richer metadata about each product, including:
@@ -15,25 +17,25 @@ We are actively building out this product bundle to contain deeper, richer metad
 - **Target Audience:** Who the product is best suited for.
 - **Community Support:** Where to find communities and peers to help you with implementation.
 
-## Examples of Usage
+## Ways You Can Use These Files
 
-This repository is designed to be highly portable and meshed with other tools. Here are two examples of how this data is currently being used:
+This repository is designed to be highly portable so you can weave this data into your own applications. Here are a few examples:
 
-1. **[Offer Center](https://offercenter.techsoup.org/)**
-   A centralized HTML window/application powered by a JSON file built dynamically from a subset of this product bundle.
-2. **`ask-techsoup` (LLM Integration)**
-   An LLM skills file and agent that imports the JSON representation of this bundle into an AI context, allowing users to query and receive customized recommendations based on their needs.
+1. **Build a Web Application**
+   Like the Offer Center, you can parse these files into a single JSON object to drive an entire interactive portal.
+2. **Train AI & LLM Agents**
+   Because these are structured markdown files, they can be directly imported into an LLM context (like our `ask-techsoup` agent) to allow users to query and receive customized tech recommendations.
+3. **Create Custom Website Embeds**
+   You can parse the data to generate targeted widgets for your own website. We have provided an example of this below.
 
-## Exploring the Data
+### Example: Embed Tools for Small Nonprofits on Your Website
 
-Weve provided simple Python scripts in the `scripts/` directory to demonstrate how you can parse and filter this data locally without needing a heavy backend.
+We ve provided a reference script in the `scripts/` directory that demonstrates how you can filter this data to generate a deployable HTML web component. 
 
-- `scripts/filter_small_nonprofit.py`: Extracts products best suited for a brand-new, small nonprofit organization.
-- `scripts/filter_fundraising.py`: Pulls out specifically categorized fundraising tools.
+- `scripts/generate_small_npo_embed.py`: This script parses the bundle for products suitable for brand-new, small nonprofits (minimum budget of $0) and outputs a ready-to-use HTML snippet you can drop onto any webpage, complete with TechSoup credits.
 
 ## Contributing
-
-We welcome community involvement! Whether you want to clone this repository to power your own applications, submit a pull request to add new products, or share scripts youve written, please see our [CONTRIBUTING.md](CONTRIBUTING.md) guide.
+We welcome community involvement! Whether you want to clone this repository to power your own applications, submit a pull request to add new products, or share scripts you ve written, please see our [CONTRIBUTING.md](CONTRIBUTING.md) guide.
 
 ## License
-This project is licensed under the CC BY-SA 4.0 License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International Public License](LICENSE).
