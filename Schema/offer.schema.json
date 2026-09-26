@@ -1,6 +1,5 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://vkb.techsoup.org/schema/offer.schema.json",
   "title": "VKB Offer Entry",
   "description": "Frontmatter contract for a Verbose Knowledge Base product entry (products/**/*_README.md). Validate against the parsed YAML frontmatter, not the whole file. Derived from all 159 entries in the bundle; see offer-entry.md for field narrative and known drift.",
   "type": "object",
