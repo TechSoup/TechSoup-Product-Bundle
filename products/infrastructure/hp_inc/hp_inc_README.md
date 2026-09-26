@@ -8,7 +8,7 @@ x-civic:
   sub_category: Computers & hardware
   offer:
     type: Discount
-    summary: Varing discount levels on hardware
+    summary: Varying discount levels on hardware
     standard_tier: null
     savings_estimate: null
     badges:

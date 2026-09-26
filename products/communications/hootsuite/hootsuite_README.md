@@ -26,7 +26,7 @@ x-civic:
     max_budget: null
   provenance:
     last_audited: '2026-05-18'
-    vendor_url: https://www.hootsuite.com/about/hootgiving
+    vendor_url: https://www.techsoup.org/hootsuite
     source: TechSoup VKB
 ---
 

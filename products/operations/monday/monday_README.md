@@ -25,7 +25,7 @@ x-civic:
     max_budget: null
   provenance:
     last_audited: '2026-05-16'
-    vendor_url: https://monday.com/nonprofits/
+    vendor_url: https://www.techsoup.org/monday
     source: TechSoup VKB
 ---
 

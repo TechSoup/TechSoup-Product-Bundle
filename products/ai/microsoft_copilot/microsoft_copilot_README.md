@@ -1,5 +1,5 @@
 ---
-title: Microsoft - CoPilot for Nonprofits
+title: Microsoft - Copilot for Nonprofits
 type: offer
 x-civic:
   profile: civic/0.5
@@ -12,7 +12,7 @@ x-civic:
   relations: []
   offer:
     type: Discount
-    summary: Various CoPilot license discount options
+    summary: Various Copilot license discount options
     badges:
       - Discount
   eligibility:

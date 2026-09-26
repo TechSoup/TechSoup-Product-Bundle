@@ -6,6 +6,14 @@ x-civic:
   status: ACTIVE
   category: Infrastructure
   sub_category: General
+  alias:
+    - office
+    - m365
+    - o365
+    - azure
+    - microsoft 365
+    - office 365
+  relations: []
   offer:
     type: Donation
     summary: Various donation & discount options on a wide variety of products

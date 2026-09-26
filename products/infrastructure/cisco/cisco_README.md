@@ -6,6 +6,15 @@ x-civic:
   status: ACTIVE
   category: Infrastructure
   sub_category: General
+  alias:
+    - camera
+    - router
+    - firewall
+    - switch
+    - sensor
+    - wireless
+    - gateway
+  relations: []
   offer:
     type: Donation
     summary: Donations & discounts on hardware & licensing

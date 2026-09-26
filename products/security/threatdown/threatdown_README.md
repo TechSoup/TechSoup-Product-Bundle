@@ -8,7 +8,7 @@ x-civic:
   sub_category: Antivirus
   offer:
     type: Discount
-    summary: Varing discount levels by product
+    summary: Varying discount levels by product
     standard_tier: ''
     savings_estimate: ''
     badges:

@@ -6,6 +6,9 @@ x-civic:
   status: ACTIVE
   category: Operations
   sub_category: Accounting & Finance
+  alias:
+    - quickbooks
+  relations: []
   offer:
     type: Discount
     summary: 25% discount
@@ -24,7 +27,7 @@ x-civic:
     min_budget: 0
   provenance:
     last_audited: '2026-06-04'
-    vendor_url: https://www.xero.com/us/small-businesses/non-profit/
+    vendor_url: https://www.techsoup.org/xero
     source: TechSoup VKB
 ---
 

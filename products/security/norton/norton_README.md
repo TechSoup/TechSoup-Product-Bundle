@@ -6,6 +6,9 @@ x-civic:
   status: ACTIVE
   category: Security
   sub_category: Endpoint Protection
+  alias:
+    - antivirus
+  relations: []
   offer:
     type: Donation
     summary: Subscription donations

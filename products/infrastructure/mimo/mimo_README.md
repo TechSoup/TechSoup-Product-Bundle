@@ -8,7 +8,7 @@ x-civic:
   sub_category: Touchscreen display hardware
   offer:
     type: Donation
-    summary: Varing discounts available
+    summary: Varying discounts available
     standard_tier: null
     savings_estimate: null
     badges:

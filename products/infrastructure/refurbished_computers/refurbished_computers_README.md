@@ -6,6 +6,14 @@ x-civic:
   status: ACTIVE
   category: Infrastructure
   sub_category: Hardware (refurbished computers)
+  alias:
+    - apple
+    - ipad
+    - macbook
+    - tablet
+    - laptop
+    - computer
+  relations: []
   offer:
     type: Discount
     summary: Discounted refurbished computers & accessories

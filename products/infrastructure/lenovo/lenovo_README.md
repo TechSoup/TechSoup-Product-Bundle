@@ -1,35 +1,37 @@
 ---
-type: offer
 title: Lenovo for Nonprofits
+type: offer
 x-civic:
   profile: civic/0.5
   status: ACTIVE
   category: Infrastructure
   sub_category: Hardware
+  alias:
+    - laptop
+    - desktop
+    - computer
+    - tablet
+  relations: []
   offer:
     type: Discount
     summary: Up to 25% Discount
-    standard_tier: null
-    savings_estimate: null
     badges:
-    - Discount
+      - Discount
   eligibility:
     eligible_audiences:
-    - nonprofit
-    - public_library
+      - nonprofit
+      - public_library
     regions:
-    - US
+      - US
     pcs_subject:
-    - ALL
-    rules: Request once for unlimited catalog access; products may not be resold
+      - ALL
     min_budget: 0
-    max_budget: null
+    rules: Request once for unlimited catalog access; products may not be resold
   provenance:
-    last_audited: '2026-06-25'
-    vendor_url: https://www.techsoup.org/lenovo
     source: TechSoup VKB
+    vendor_url: https://www.techsoup.org/lenovo
+    last_audited: '2026-06-25'
 ---
-
 ## Level 1 (Quick Glance)
 
 Lenovo for Nonprofits gives 501(c)(3) nonprofits and public libraries access to a discounted Lenovo product catalog covering desktops, laptops, monitors, tablets, software, and accessories. Through TechSoup, eligible organizations can save up to 25% off Lenovo products, make unlimited purchases, and order tax-exempt. It is a straightforward procurement channel for orgs refreshing or expanding their device fleet.

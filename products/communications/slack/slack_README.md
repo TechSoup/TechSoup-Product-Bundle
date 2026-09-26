@@ -26,7 +26,7 @@ x-civic:
     max_budget: null
   provenance:
     last_audited: '2026-05-16'
-    vendor_url: https://slack.com/help/articles/204368833
+    vendor_url: https://www.techsoup.org/slack
     source: TechSoup VKB
 ---
 

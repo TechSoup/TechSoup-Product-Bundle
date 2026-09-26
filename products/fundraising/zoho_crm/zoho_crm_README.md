@@ -24,7 +24,7 @@ x-civic:
     min_budget: 0
   provenance:
     last_audited: '2026-06-04'
-    vendor_url: https://www.zoho.com/nonprofits/
+    vendor_url: https://www.techsoup.org/zoho
     source: TechSoup VKB
 ---
 
