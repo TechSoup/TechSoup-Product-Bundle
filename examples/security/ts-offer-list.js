@@ -28,6 +28,16 @@ class TSOfferList extends HTMLElement {
         .footer { margin-top: 24px; text-align: center; font-size: 12px; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 16px; }
         .footer a { color: #2563eb; text-decoration: none; }
         .error { color: #991b1b; }
+        @media (prefers-color-scheme: dark) {
+          .card { background: #111827; border-color: #1f2937; box-shadow: none; }
+          h3, strong { color: #e5e7eb; }
+          p.desc, span.meta { color: #94a3b8; }
+          li { border-bottom-color: #1f2937; }
+          a.view { background: #60a5fa; color: #0b1120; }
+          .footer { border-top-color: #1f2937; color: #94a3b8; }
+          .footer a { color: #60a5fa; }
+          .error { color: #fca5a5; }
+        }
       </style>
       <div class="card">
         ${title ? `<h3>${title}</h3>` : ""}

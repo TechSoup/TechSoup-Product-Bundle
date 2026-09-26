@@ -25,3 +25,13 @@ These two exist to show the shape of the pattern, not to be the last word on
 it — more examples (different filters, different output formats entirely)
 are expected to land here over time. If you build something on top of the
 bundle, a PR adding it here is welcome; see [CONTRIBUTING.md](../CONTRIBUTING.md).
+
+## License
+
+The code in this directory is licensed under the [MIT License](LICENSE), so
+you can copy it into any project. The generated `products.json` feeds are
+derived from the bundle and remain under the repository's
+[CC BY-SA 4.0](../LICENSE) license, which asks you to credit the source.
+`<ts-offer-list>` includes a "Powered by the TechSoup Product Bundle" footer
+linking back here; if you render the feed some other way, give equivalent
+credit.

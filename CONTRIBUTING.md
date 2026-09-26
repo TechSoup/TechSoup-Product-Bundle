@@ -1,33 +1,80 @@
 # Contributing to the TechSoup Product Bundle
 
-First off, thank you for considering contributing to the TechSoup Product Bundle! This repository acts as a single, portable source of truth for nonprofit technology donations and discounts.
+Thank you for considering contributing to the TechSoup Product Bundle! This
+repository is a portable, open copy of the dataset TechSoup uses to describe
+technology donations and discounts for nonprofits.
 
-## Structural Requirements (OKF Conformant)
-To maintain our "Trust Infrastructure", **all product additions must adhere to the Open Knowledge Format directory structure.**
-- Each product must reside in its own folder within its category (e.g., `products/security/new_product/`).
-- The primary markdown file must be named `[product_name]_README.md` and contain the required YAML frontmatter.
+There are three ways to help, and each one takes a different route.
 
-## How Can I Contribute?
+| You want to… | Do this |
+|---|---|
+| Add a product, or fix a product entry | [Open an issue](#1-suggest-a-product-or-report-an-inaccuracy) — please **don't** send a pull request to `products/` |
+| Share something you built with the bundle | [Tell us about it](#2-share-what-you-built), or add it to `examples/` in a pull request |
+| Improve the docs, schema, or examples | [Send a pull request](#3-improve-the-docs-schema-or-examples) |
 
-### 1. Clone & Build Your Own Apps
-You are encouraged to clone this repository and use the OKF-conformant markdown files to power your own applications, portals, or LLM agents. 
-- If you build a new tool or integration, **let us know!**
-- Feel free to share custom scripts (like those in the `examples/` directory) that help organizations parse the bundle in creative ways.
+## Why product changes go through issues
 
-### 2. Add New Products
-If you know of a technology donation or discount available to nonprofits that isn t listed here:
-1. **Fork** the repository.
-2. **Create a new product folder** in the appropriate category under the `products/` directory.
-3. **Add your `_README.md` file**, ensuring it follows our OKF-conformant YAML frontmatter structure (refer to existing files as templates).
-4. **Submit a Pull Request (PR)** with a brief description of the offering.
+Everything in `products/` is mirrored automatically from TechSoup's internal
+Verbose Knowledge Base (VKB), where entries are researched and audited before
+they are published. Every sync replaces the whole `products/` directory, so a
+pull request that edits a product file here would be overwritten the next time
+the mirror runs.
 
-### 3. Update Existing Products
-Product offers, eligibility rules, and vendor URLs change over time. If you spot an inaccuracy:
-1. **Fork** the repository.
-2. Edit the relevant markdown file.
-3. **Submit a Pull Request (PR)** explaining the update.
+Opening an issue gets your change into the VKB instead. Once it is reviewed
+there, it flows back into this repository with the next sync, and into every
+tool built on top of it.
 
-### 4. Share Custom Scripts
-If you ve written a Python, Node.js, or bash script that filters, parses, or transforms this data into something useful, please submit a PR to add it to the `examples/` directory!
+## 1. Suggest a product or report an inaccuracy
 
-By contributing to this repository, you agree that your contributions will be licensed under its CC BY-SA 4.0 License.
+Offers, eligibility rules, and vendor URLs change often, and we want to hear
+when an entry is wrong or when something is missing.
+
+- **New product:** open a [Suggest a product](https://github.com/TechSoup/TechSoup-Product-Bundle/issues/new?template=suggest-product.yml)
+  issue. Include the vendor's nonprofit program page, what the offer is, and who
+  qualifies.
+- **Correction:** open a [Report an inaccuracy](https://github.com/TechSoup/TechSoup-Product-Bundle/issues/new?template=report-inaccuracy.yml)
+  issue. Name the entry (for example `products/security/1password/`), say what's
+  wrong, and link a source that shows the current terms.
+
+A link to the vendor's own page is the most useful thing you can include: every
+entry records the page its terms were read from (`x-civic.provenance.vendor_url`),
+and a reviewer will check your change against it.
+
+## 2. Share what you built
+
+If you've built something on top of the bundle — a website widget, a filtered
+feed, a chatbot, a spreadsheet import, a script — **we'd love to see it**, and
+we'd like to share it with others in the sector. Either:
+
+- **Tell us about it:** open a [Share what you built](https://github.com/TechSoup/TechSoup-Product-Bundle/issues/new?template=share-what-you-built.yml)
+  issue with a link and a sentence or two about what it does. We'll add it to
+  the *Built with the bundle* list in the [README](README.md); or
+- **Add it to `examples/`:** if it's small and self-contained, send a pull
+  request that adds a folder under `examples/`. Follow the pattern of the
+  existing examples: one folder with its own `README.md` explaining what it does
+  and how to run it, reading from `../../products/` rather than a copy of the
+  data.
+
+## 3. Improve the docs, schema, or examples
+
+Pull requests are welcome for everything outside `products/`: the README, this
+guide, the files in `Schema/`, and the code in `examples/`.
+
+1. **Fork** the repository and create a branch.
+2. Make your change. If you're editing an example, regenerate its feed with its
+   `build_feed.py` and check the demo still loads.
+3. **Open a pull request** describing what you changed and why.
+
+If a schema change would make existing entries fail validation, open an issue
+first. The schema is calibrated against the data that's already published, so
+tightening it means cleaning up the data first.
+
+## Licensing
+
+By contributing, you agree that your contributions are licensed the same way as
+the part of the repository they belong to:
+
+- **Data and documentation** (everything except `examples/`) — [CC BY-SA 4.0](LICENSE).
+- **Example code** in `examples/` — [MIT](examples/LICENSE), so it can be dropped
+  into any project. The JSON feeds generated from the bundle are still data and
+  stay under CC BY-SA 4.0.

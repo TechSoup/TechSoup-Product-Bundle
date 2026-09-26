@@ -1,0 +1,36 @@
+name: Share what you built
+description: Built something with the bundle? Tell us so we can share it.
+title: "[Built with] "
+labels: ["built with the bundle"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We'd love to see what you've made, and to list it in the README so others in the sector can find it. If it's small and self-contained, you're also welcome to add it to `examples/` in a pull request.
+  - type: input
+    id: name
+    attributes:
+      label: What's it called?
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Link
+      description: Where people can see or get it — a live page, a repository, a download.
+      placeholder: https://
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What does it do?
+      description: A sentence or two. What part of the bundle does it use, and who is it for?
+    validations:
+      required: true
+  - type: checkboxes
+    id: listing
+    attributes:
+      label: Listing
+      options:
+        - label: It's OK to list this in the README's "Built with the bundle" section.

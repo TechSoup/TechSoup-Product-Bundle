@@ -12,14 +12,21 @@ x-civic:
 
 # Offer Entry Schema
 
-Every product in the Verbose Knowledge Base is one markdown file at
+Every product in this bundle is one markdown file at
 `products/<category>/<product>/<product>_README.md`, consisting of YAML
 frontmatter followed by prose. This document defines what that frontmatter
 contains.
 
-The contract below was derived from all **159** entries currently in the bundle
-(141 active, 18 archived), and validated against every one of them. Where entries
-disagree with each other, that is noted rather than smoothed over.
+The entries are maintained in TechSoup's internal Verbose Knowledge Base (VKB),
+the editorial source for the [Offer Center](https://offercenter.techsoup.org/),
+and mirrored into `products/` automatically. "VKB" in field values and
+descriptions below refers to that source.
+
+The contract below was derived from all **157** entries in the bundle as of
+2026-09-26 (139 active, 18 archived), and validated against every one of them.
+Counts quoted throughout are a snapshot from that date and drift as entries are
+added, edited, and archived. Where entries disagree with each other, that is
+noted rather than smoothed over.
 
 **Scope.** This schema covers `*_README.md` offer entries only. The
 `agent/*_skill.md` files that sit alongside them use a different frontmatter
@@ -70,7 +77,7 @@ x-civic:
 
 | Field | Required | Type | Notes |
 |---|---|---|---|
-| `type` | yes | string | Always `offer` for product entries. Present in all 159. |
+| `type` | yes | string | Always `offer` for product entries. Present in all 157. |
 | `title` | yes | string | Human-readable product name as TechSoup presents it. |
 | `x-civic` | yes | object | All structured data lives here. See below. |
 
@@ -83,11 +90,11 @@ reader can ignore it without error while TechSoup tooling relies on it.
 | Field | Required | Type | Notes |
 |---|---|---|---|
 | `profile` | yes | string | Schema profile identifier. `civic/0.5` across all entries. |
-| `status` | yes | enum | `ACTIVE` (141) or `ARCHIVED` (18). |
+| `status` | yes | enum | `ACTIVE` (139) or `ARCHIVED` (18). |
 | `category` | yes | enum | One of the seven categories. Must agree with the entry's directory. |
 | `sub_category` | yes | string | Free text. See *Sub-category* below. |
-| `alias` | no | string[] | Alternative names the product is known by. Present in 13 entries; may be `[]`. |
-| `relations` | no | object[] | Links to other entries. Present in 13 entries; may be `[]`. |
+| `alias` | no | string[] | Alternative names the product is known by. Present in 29 entries; may be `[]`. |
+| `relations` | no | object[] | Links to other entries. Present in 29 entries, usually as `[]`. |
 | `offer` | yes | object | What is being offered. |
 | `eligibility` | yes | object | Who qualifies. |
 | `provenance` | yes | object | Where the information came from and when. |
@@ -100,22 +107,22 @@ Seven permitted values. Counts include archived entries.
 
 | Value | Entries |
 |---|---:|
-| `Operations` | 54 |
+| `Operations` | 53 |
 | `Communications` | 36 |
 | `Infrastructure` | 30 |
 | `Fundraising` | 15 |
-| `Security` | 11 |
+| `Security` | 10 |
 | `AI` | 8 |
 | `Programs` | 5 |
 
 ### `sub_category`
 
-Currently **free text**, and the least disciplined field in the schema: 88
-distinct values across 159 entries. `General` accounts for 41 of them; roughly
-sixty values are used exactly once, and several are near-duplicates of each other
+Currently **free text**, and the least disciplined field in the schema: 90
+distinct values across 157 entries. `General` accounts for 41 of them; roughly
+seventy values are used exactly once, and several are near-duplicates of each other
 (`Accounting & Finance` / `Accounting and Finance` / `Accounting`;
-`E-Signature` / `E-Signature & Documents`; `Hardware` / `Hardware / devices` /
-`Computers & hardware`).
+`E-Signature` / `e-Signature` / `E-Signature & Documents`; `Hardware` /
+`Hardware / devices` / `Computers & hardware`).
 
 Treat `sub_category` as a label, not a key. Do not group, filter, or build
 navigation on it without normalizing first. Promoting it to a controlled
@@ -137,15 +144,15 @@ Each element links this entry to another product entry.
 |---|---|---|---|
 | `type` | yes | enum | Nature of the offer. See below. |
 | `summary` | yes | string | Short plain-language statement, e.g. `50% Discount`, `$8/user/month`. |
-| `badges` | yes | enum[] | Display labels. `Discount` (119), `Donation` (40), `Built for Nonprofits` (6), `Open Source` (6), `Discovery` (2). |
-| `standard_tier` | no | string \| null | Commercial tier the offer maps to. Present in 146 entries, frequently `null`. |
-| `savings_estimate` | no | string \| null | Estimated value of the offer. Present in 146 entries, frequently `null`. |
+| `badges` | yes | enum[] | Display labels. `Discount` (117), `Donation` (39), `Built for Nonprofits` (6), `Open Source` (6), `Discovery` (2). |
+| `standard_tier` | no | string \| null | Commercial tier the offer maps to. Present in 133 entries, frequently `null`. |
+| `savings_estimate` | no | string \| null | Estimated value of the offer. Present in 133 entries, frequently `null`. |
 
 `offer.type` values:
 
 | Value | Entries | Meaning |
 |---|---:|---|
-| `Discount` | 115 | Reduced commercial pricing. |
+| `Discount` | 113 | Reduced commercial pricing. |
 | `Donation` | 32 | Provided at no cost. |
 | `Discovery` | 5 | Listed for awareness; no TechSoup-negotiated terms. |
 | `Open Source` | 4 | Freely available; listed as a recommendation. |
@@ -163,19 +170,19 @@ Nonprofits` badge. They are candidates for consolidation.
 | `eligible_audiences` | yes | enum[] | Organization types that qualify. |
 | `regions` | yes | enum[] | Where the offer is available. |
 | `pcs_subject` | yes | string[] | Philanthropy Classification System subject codes. |
-| `min_budget` | yes | number | Lower budget bound. `0` in effectively all entries. |
-| `max_budget` | no | number \| null | Upper bound. Present in 104 entries, usually `null`. |
-| `rules` | no | string \| null | Free-text qualifications not captured by the fields above. Present in 148 entries, usually `null`. |
+| `min_budget` | yes | number | Lower budget bound. `0` in all but one entry. |
+| `max_budget` | no | number \| null | Upper bound. Present in 94 entries, usually `null`. |
+| `rules` | no | string \| null | Free-text qualifications not captured by the fields above. Present in 139 entries, usually `null`. |
 | `notes` | deprecated | string \| null | Duplicates `rules`. One entry only (`programs/safe_shelter_collaborative`). Merge into `rules`; do not add new uses. |
 
-`eligible_audiences` values: `nonprofit` (155), `public_library` (59),
-`everyone` (4), `social_enterprise` (3), `healthcare` (1), `k12` (1), `team` (1),
+`eligible_audiences` values: `nonprofit` (153), `public_library` (59),
+`everyone` (4), `social_enterprise` (2), `healthcare` (1), `k12` (1), `team` (1),
 `personal` (1). Multiple values per entry are normal.
 
-`regions` values: `ALL` (108), `US` (51), `CA` (5), `UK` (1), `AU` (1). `ALL`
+`regions` values: `ALL` (106), `US` (51), `CA` (5), `UK` (1), `AU` (1). `ALL`
 means unrestricted, not "every listed region".
 
-`pcs_subject` is `ALL` in 157 entries; the remainder carry PCS codes
+`pcs_subject` is `ALL` in 155 entries; the remainder carry PCS codes
 (`SS000000`, `SJ000000`, `SK000000`, `SN000000`, `SR000000`). `ALL` means the
 offer is not restricted by subject area.
 
@@ -197,10 +204,10 @@ trust an entry:
 
 | Value | Entries | Meaning |
 |---|---:|---|
-| `TechSoup VKB` | 136 | Authored and audited here. Authoritative. |
+| `TechSoup VKB` | 134 | Authored and audited in the VKB. Authoritative. |
 | `products.json (reverse-sync)` | 23 | Reconstructed from the downstream feed rather than written first-hand. Structurally valid but thinner; these entries are the best candidates for a genuine audit. |
 
-Three entries wrap a long `vendor_url` using a YAML folded scalar (`>-`). That is
+Two entries wrap a long `vendor_url` using a YAML folded scalar (`>-`). That is
 valid YAML and parses to an ordinary string — no special handling needed by
 consumers.
 
@@ -247,17 +254,17 @@ Someone triaging a question reads Level 1; someone confirming a nonprofit's
 eligibility reads Level 2; someone deciding whether the organization can actually
 support the product reads Level 3.
 
-**Conformance is partial.** 111 of 159 entries use this structure; **48 do not**,
-instead using `## Overview` (43) and `## Details` (28) headings inherited from an
+**Conformance is partial.** 111 of 157 entries use this structure; **46 do not**,
+instead using `## Overview` (41) and `## Details` (27) headings inherited from an
 earlier convention. `### Embedded Parameters` appears in 88. Bringing the
-remaining 48 entries onto the Level 1–3 structure is outstanding work — treat the
+remaining 46 entries onto the Level 1–3 structure is outstanding work — treat the
 three-level form as the target for anything new or edited.
 
 ## Validating an entry
 
 `offer.schema.json` in this folder expresses the frontmatter contract above as a
 JSON Schema (draft 2020-12), for use against parsed frontmatter rather than the
-raw file. **All 159 entries currently validate against it with zero errors.**
+raw file. **All 157 entries validate against it with zero errors** (as of 2026-09-26).
 
 The schema is deliberately calibrated to pass on today's data. The normalization
 gaps called out above — `sub_category` as free text, the three singleton

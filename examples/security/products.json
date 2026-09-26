@@ -42,12 +42,6 @@
     "url": "https://www.techsoup.org/dashlane"
   },
   {
-    "title": "LastPass",
-    "category": "Security",
-    "summary": "Donated LastPass Teams",
-    "url": "https://www.techsoup.org/lastpass"
-  },
-  {
     "title": "Norton for Nonprofits",
     "category": "Security",
     "summary": "Subscription donations",
@@ -62,7 +56,7 @@
   {
     "title": "ThreatDown",
     "category": "Security",
-    "summary": "Varing discount levels by product",
+    "summary": "Varying discount levels by product",
     "url": "https://www.techsoup.org/threatdown"
   }
 ]

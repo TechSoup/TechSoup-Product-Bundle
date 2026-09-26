@@ -1,0 +1,29 @@
+name: Report an inaccuracy
+description: Tell us about a product entry that is wrong, out of date, or discontinued.
+title: "[Correction] "
+labels: ["correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Product entries are mirrored here from TechSoup's Verbose Knowledge Base, so corrections are made there rather than by pull request. A link to the vendor's current terms helps a reviewer confirm the change quickly.
+  - type: input
+    id: entry
+    attributes:
+      label: Which entry?
+      description: The product name or its folder.
+      placeholder: e.g. products/security/1password/
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's wrong, and what should it say?
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description: A link showing the current terms, ideally the vendor's own page.
+      placeholder: https://

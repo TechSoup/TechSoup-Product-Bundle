@@ -4,28 +4,231 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TechSoup Product Bundle</title>
+  <meta name="description" content="An open, Markdown-first dataset of technology donations and discounts available to nonprofits, published by TechSoup.">
+  <script src="examples/security/ts-offer-list.js" defer></script>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --accent: #2563eb;
+      --accent-soft: #eff6ff;
+      --code-bg: #0f172a;
+      --code-text: #e2e8f0;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0b1120;
+        --surface: #111827;
+        --text: #e5e7eb;
+        --muted: #94a3b8;
+        --border: #1f2937;
+        --accent: #60a5fa;
+        --accent-soft: #172554;
+        --code-bg: #020617;
+        --code-text: #e2e8f0;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0b1120;
+      --surface: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --border: #1f2937;
+      --accent: #60a5fa;
+      --accent-soft: #172554;
+      --code-bg: #020617;
+      --code-text: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    a { color: var(--accent); }
+    .wrap { max-width: 880px; margin: 0 auto; padding: 0 16px; }
+
+    header { padding: 72px 0 40px; }
+    .eyebrow {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    h1 { font-size: clamp(32px, 6vw, 44px); line-height: 1.15; margin: 0 0 16px; letter-spacing: -0.02em; }
+    .lede { font-size: 18px; color: var(--muted); max-width: 640px; margin: 0 0 28px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: var(--surface);
+    }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: #ffffff; }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .btn.primary { color: #0b1120; }
+    }
+    :root[data-theme="dark"] .btn.primary { color: #0b1120; }
+
+    section { padding: 32px 0; }
+    h2 { font-size: 22px; margin: 0 0 8px; letter-spacing: -0.01em; }
+    .section-intro { color: var(--muted); margin: 0 0 24px; max-width: 640px; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .card h3 { font-size: 16px; margin: 0 0 6px; }
+    .card p { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
+    .card .links { font-size: 14px; display: flex; flex-wrap: wrap; gap: 4px 16px; }
+
+    .demo { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; }
+    .demo > * { min-width: 0; }
+    pre {
+      margin: 0;
+      background: var(--code-bg);
+      color: var(--code-text);
+      border-radius: 12px;
+      padding: 20px;
+      font-size: 13px;
+      line-height: 1.55;
+      overflow-x: auto;
+    }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .note { font-size: 14px; color: var(--muted); margin: 12px 0 0; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 32px;
+      padding: 24px 0 48px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+  </style>
 </head>
-<body style="max-width: 640px; margin: 60px auto; padding: 0 16px; font-family: system-ui, -apple-system, sans-serif; color: #0f172a;">
-  <h1 style="font-size: 24px; margin-bottom: 4px;">TechSoup Product Bundle</h1>
-  <p style="color: #64748b; font-size: 15px; line-height: 1.5;">
-    An open, Markdown-first collection of technology donations and discounts
-    available to nonprofits — the same dataset that powers TechSoup's
-    <a href="https://offercenter.techsoup.org/" style="color: #2563eb;">Offer Center</a>.
-  </p>
+<body>
+  <div class="wrap">
+    <header>
+      <span class="eyebrow">Open data for the nonprofit sector</span>
+      <h1>TechSoup Product Bundle</h1>
+      <p class="lede">
+        An open, Markdown-first collection of technology donations and discounts
+        available to nonprofits. It's the same dataset that powers TechSoup's
+        <a href="https://offercenter.techsoup.org/">Offer Center</a>, published so
+        anyone can build on it.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/TechSoup/TechSoup-Product-Bundle">View on GitHub</a>
+        <a class="btn" href="#examples">See the live examples</a>
+      </div>
+    </header>
 
-  <h2 style="font-size: 16px; margin-top: 32px;">Live examples</h2>
-  <p style="color: #64748b; font-size: 14px;">
-    Reference widgets built from the bundle's JSON feed. See
-    <a href="README.md" style="color: #2563eb;">README.md</a> for the full pattern.
-  </p>
-  <ul style="padding-left: 20px; line-height: 1.8;">
-    <li><a href="examples/open-source/" style="color: #2563eb;">Open Source Tools widget</a></li>
-    <li><a href="examples/security/" style="color: #2563eb;">Security Tools widget</a></li>
-  </ul>
+    <section>
+      <h2>What's inside</h2>
+      <p class="section-intro">
+        Each product is one Markdown file with structured YAML frontmatter
+        covering the offer, eligibility, and provenance, followed by
+        plain-language detail. There's no database or API to run: the files
+        are the data.
+      </p>
+      <div class="grid">
+        <div class="card">
+          <h3>Products</h3>
+          <p>Offers across seven categories, from AI and security to fundraising and operations.</p>
+          <div class="links">
+            <a href="https://github.com/TechSoup/TechSoup-Product-Bundle/tree/main/products">Browse the products</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Schema</h3>
+          <p>The field contract every entry follows, plus a JSON Schema to validate against.</p>
+          <div class="links">
+            <a href="https://github.com/TechSoup/TechSoup-Product-Bundle/blob/main/Schema/offer-entry.md">Read the schema</a>
+            <a href="Schema/offer.schema.json">JSON Schema</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Contribute</h3>
+          <p>Report an out-of-date offer, suggest a product, or share what you've built.</p>
+          <div class="links">
+            <a href="https://github.com/TechSoup/TechSoup-Product-Bundle/blob/main/CONTRIBUTING.md">How to contribute</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <h2 style="font-size: 16px; margin-top: 32px;">Source</h2>
-  <p style="color: #64748b; font-size: 14px;">
-    <a href="https://github.com/TechSoup/TechSoup-Product-Bundle" style="color: #2563eb;">github.com/TechSoup/TechSoup-Product-Bundle</a>
-  </p>
+    <section id="examples">
+      <h2>Live examples</h2>
+      <p class="section-intro">
+        Each example filters the bundle into a small JSON feed and renders it
+        with a drop-in web component. Here's the security feed running on
+        this page:
+      </p>
+      <div class="demo">
+        <ts-offer-list
+          src="examples/security/products.json"
+          title="Recommended Security Tools"
+          description="Technology donations and discounts to help secure your nonprofit organization.">
+        </ts-offer-list>
+        <div>
+          <pre><code>&lt;script
+  src="https://techsoup.github.io/TechSoup-Product-Bundle/examples/security/ts-offer-list.js"
+  defer&gt;&lt;/script&gt;
+
+&lt;ts-offer-list
+  src="https://techsoup.github.io/TechSoup-Product-Bundle/examples/security/products.json"
+  title="Recommended Security Tools"&gt;
+&lt;/ts-offer-list&gt;</code></pre>
+          <p class="note">Paste this into any web page to embed the same list.</p>
+        </div>
+      </div>
+
+      <div class="grid" style="margin-top: 24px;">
+        <div class="card">
+          <h3>Open Source Tools</h3>
+          <p>Active offers badged Open Source.</p>
+          <div class="links">
+            <a href="examples/open-source/">Live demo</a>
+            <a href="https://github.com/TechSoup/TechSoup-Product-Bundle/tree/main/examples/open-source">Source</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Security Tools</h3>
+          <p>Active offers in the Security category.</p>
+          <div class="links">
+            <a href="examples/security/">Live demo</a>
+            <a href="https://github.com/TechSoup/TechSoup-Product-Bundle/tree/main/examples/security">Source</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Maintained by TechSoup Global Network. Data licensed
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>;
+      example code licensed MIT.
+    </footer>
+  </div>
 </body>
 </html>

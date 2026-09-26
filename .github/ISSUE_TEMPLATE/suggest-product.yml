@@ -1,0 +1,49 @@
+name: Suggest a product
+description: Tell us about a technology donation or discount for nonprofits that isn't in the bundle yet.
+title: "[Product] "
+labels: ["product suggestion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Product entries are researched and published through TechSoup's Verbose Knowledge Base, then mirrored here. Please don't open a pull request against `products/` — suggest it here instead.
+  - type: input
+    id: product
+    attributes:
+      label: Product name
+      placeholder: e.g. Example CRM for Nonprofits
+    validations:
+      required: true
+  - type: input
+    id: vendor_url
+    attributes:
+      label: Vendor's nonprofit program page
+      description: The page where the vendor describes the offer and who qualifies.
+      placeholder: https://
+    validations:
+      required: true
+  - type: textarea
+    id: offer
+    attributes:
+      label: What is offered?
+      description: For example "50% off the Business plan" or "free for up to 10 users".
+    validations:
+      required: true
+  - type: textarea
+    id: eligibility
+    attributes:
+      label: Who qualifies?
+      description: Organization types, countries or regions, budget limits, anything else you know.
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category (if you know)
+      options:
+        - AI
+        - Communications
+        - Fundraising
+        - Infrastructure
+        - Operations
+        - Programs
+        - Security
+        - Not sure
