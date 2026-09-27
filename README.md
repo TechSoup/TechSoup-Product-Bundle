@@ -34,7 +34,7 @@ This repository is designed to be highly portable so you can weave this data int
 1. **Build a Web Application**
    Like the Offer Center, you can parse these files into a single JSON object to drive an entire interactive portal.
 2. **Import into LLMs**
-   Because these are structured markdown files, they can be directly imported into an LLM context. For example, our [`ask-techsoup`](https://github.com/TechSoup/ask-techsoup) skill lets an AI assistant answer questions about this catalog, so users can query it and receive customized tech recommendations.
+   Because these are structured markdown files, they can be directly imported into an LLM context. For example, our [`ask-techsoup`](https://github.com/TechSoup/ask-techsoup) skill lets an AI assistant answer questions about this bundle, so users can query it and receive customized tech recommendations.
 3. **Create Custom Website Embeds**
    You can parse the data locally to generate targeted HTML widgets for your own website. We have provided reference examples of this in the [`examples/`](examples/) directory.
 
